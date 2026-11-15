@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+
+  --color-primary: #0058c3;
+  --color-primary-dark: #004397;
+  --color-primary-container: #0070f3;
+
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.collapsible-content {
+  overflow: hidden;
+}
+
+.collapsible-content[data-state="open"] {
+  animation: collapsible-down 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.collapsible-content[data-state="closed"] {
+  animation: collapsible-up 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  body {
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+.tap-effect {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tap-effect:active {
+  transform: scale(0.985);
+  background-color: #f8fafc;
+}
